@@ -1,0 +1,31 @@
+{
+  "name": "verify",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export",
+    "deploy": "next build && next export && npx thirdweb@latest upload out"
+  },
+  "dependencies": {
+    "@thirdweb-dev/chains": "^0.1.27",
+    "@thirdweb-dev/sdk": "^4.0.59",
+    "@types/node-telegram-bot-api": "^0.64.6",
+    "dotenv": "^16.0.1",
+    "ethers": "^5",
+    "node-telegram-bot-api": "^0.65.1",
+    "pm2": "^5.3.1",
+    "requests": "^0.3.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.11",
+    "@types/react": "^18",
+    "eslint": "^8.29.0",
+    "eslint-config-next": "^13",
+    "typescript": "^5.4.4"
+  }
+}
