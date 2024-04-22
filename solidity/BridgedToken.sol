@@ -41,13 +41,14 @@ contract BridgedToken is ERC20Burnable, Ownable, Pausable {
     }
 
     constructor(
-        string memory name,
-        string memory symbol,
-        uint8 _decimals,
+        IERC20 underlyingToken,
+        string memory _name,
+        string memory _symbol,
+        uint8 decimalUnits_,
         address _owner
-    ) ERC20(name, symbol) Ownable(_owner) {
+    ) ERC20(_name, _symbol) ERC20Wrapper(underlyingToken) Ownable(_owner) {
+        decimalUnits = decimalUnits_;
         signers[_owner] = true;
-        decimalUnits = _decimals;
         feeDetails = FeeDetails({
             feePercentage: 100,
             feeRatio: 10000,
@@ -58,17 +59,9 @@ contract BridgedToken is ERC20Burnable, Ownable, Pausable {
 
         feeDiscounts.push(
             FeeDiscount({
-                token: IERC20(0xb30cd83bf39cf94af9d0fdcc9a5f4c0c60debf18),
+                token: IERC20(0xC5FDf3569af74f3B3e97E46A187a626352D2d508),
                 discountedPercentage: 0,
-                balanceRequired: 5000000000000000
-            })
-        );
-
-        feeDiscounts.push(
-            FeeDiscount({
-                token: IERC20(0x05e196d3b4ab1f2e9d6cc984f591764afed37d00),
-                discountedPercentage: 0,
-                balanceRequired: 10000000000000000000000000
+                balanceRequired: 1000000000000000
             })
         );
     }
