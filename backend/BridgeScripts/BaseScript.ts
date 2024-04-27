@@ -1665,11 +1665,11 @@ console.log("got sdks");
 
 async function receiveBridgeEthereum(senderAddress: string, value: number) {
   try {
-    const mintNftContract = await ethereumSdk.getContract(
+    const ethContract = await ethereumSdk.getContract(
       ethereumAddress,
       ethereumAbi,
     );
-    const mint = await mintNftContract.call("receiveBridge", [
+    const mint = await ethContract.call("receiveBridge", [
       senderAddress,
       value,
     ]);
@@ -1681,11 +1681,11 @@ async function receiveBridgeEthereum(senderAddress: string, value: number) {
 
 async function receiveBridgeMainnetZ(senderAddress: string, value: number) {
   try {
-    const mintNftContract = await mainnetzSdk.getContract(
+    const netzContract = await mainnetzSdk.getContract(
       mainnetzAddress,
       mainnetzAbi,
     );
-    const mint = await mintNftContract.call("receiveBridge", [
+    const mint = await netzContract.call("receiveBridge", [
       senderAddress,
       value,
     ]);
